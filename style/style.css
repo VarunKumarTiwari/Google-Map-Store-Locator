@@ -1,6 +1,4 @@
-.style{
-    overflow: hidden; 
-    max-height: 465px;}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
@@ -140,51 +138,55 @@ img
 {
     display: flex;
     flex-direction: row;
-    margin-top: 2%;
-    
-    margin-left: 4%;
-    justify-content: space-between;
+    padding: 10px;
 }
 .store-container:hover
 {
     background-color: red;
     background-image: linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
-        
+        border-radius: 7px;
 }
-.store-container > img
+.store-container img
 {
-    margin-left: 5%;
+    
+    padding: 10px;
+
+    width: 60px;
 }
-.store-container > div
+.store-container  div
 {
-    text-align: left;
+    text-align: center;
 
 }
 
 #address
-{
+{   
+    padding: 10px;
     font-size: 18px;
     margin-right: 3%;
+    text-align: left;
     font-weight: bolder;
 }
 
 #phone
 {
-    
     font-size: 15px;
     color: grey;
-    
 }
 #storenum
 {
-    width: 17px;
-    margin-right: 10px;
+    text-decoration: center;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
     background-color: grey;
-    border-radius: 100% ;
-    margin-right: 3%;
-    text-align: center;
+    border-radius: 100%;
+    
 }
-
+#index
+{
+   margin-left: 5%;
+}
 
 .googleMapBox 
 {
@@ -194,9 +196,26 @@ img
     background: rgb(47,54,64,0.9);
 
 }
-.gm-style-iw .gm-style-iw-c
+.googleMapBox div{
+    text-align: center;
+    padding: 5px;
+
+}
+.googleMapBox .phaddress{
+    display: flex;
+    flex-direction: row;
+}
+.googleMapBox .phaddress img
 {
-    background  : rgb(47,54,64,0.9);
-   
+    padding: 5px;
+
+    width: 20px;
 }
 
+
+.gm-style-iw div :hover
+{
+    background-color: red;
+    background-image: linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
+    border-radius: 10px;
+}

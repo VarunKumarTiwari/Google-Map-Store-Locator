@@ -5,13 +5,14 @@ var image= 'style/image/icons8-street-view-64.png';
 
 var infoWindow;
 function initMap() {
+ 
     var Athlone = {lat: 53.43333, lng: -7.95};
     map = new google.maps.Map(document.getElementById('map'), {
       center: Athlone,
       zoom: 50,
       mapTypeId: 'roadmap',
       
-     
+      
       styles: [
         {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
         {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -93,11 +94,16 @@ function initMap() {
         }
       ]
     });
+    
+
     infoWindow = new google.maps.InfoWindow();
    
     
     
     searchStores();
+    google.maps.event.addListenerOnce(map, 'idle', function(){
+      jQuery('.gm-style-iw').prev('div').remove();
+  });
     
   }
 
@@ -159,10 +165,10 @@ function setOnClickListener() {
                 <img src="style/image/store-solid.svg"> <br>
                 <div id="phone">${phone}</div>
             </div>
-        <div>
+        
             <div id="address">${address[0]}<br> ${address[1]}</div>
-        </div>
-        <div>
+       
+        <div id="index">
         <div id="storenum"> ${index+1} </div>
             </div>
         </div>
@@ -193,15 +199,27 @@ function dataMarker(stores)
 }
 
   function createMarker(latlng, name, address, phone, opentill) {
-    var html = `<div class="googleMapBox">
+    var html = `
+    <div class="googleMapBox">
     <div><b> ${name} </b><br>
     ${opentill}<br></div>
     <hr>
-    <div><img src="style/image/phone-square-alt-solid.svg" >${phone}</div>
-    <div><img src="style/image/address-card-solid.svg" >${address}</div>
-    </div>
-    `
+    <div class="phaddress">
+    
+    <img src="style/image/phone-square-alt-solid.svg" >
+    
+    <div id="ph">${phone}</div>
 
+    <img src="style/image/address-card-solid.svg" >
+   
+    <div id="add">${address}</div>
+    </div>
+    </div>
+    
+    `
+    infoWindow = new google.maps.InfoWindow({
+      content: html
+     } );
     
     var marker = new google.maps.Marker({
       map: map,
