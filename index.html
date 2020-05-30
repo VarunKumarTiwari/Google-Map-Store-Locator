@@ -13,11 +13,15 @@
     
 
 </head>
+
 <body>
+    <div id="papalogo">
+    <img src="style/image/papa.png">
+</div>
     <div class="gradient-text" id="Sheading">Store Locator</div>
 
     <div class="searchBox">
-        <input id="zipcode" class="searchInput"  type="text" name="" placeholder="Search">
+        <input id="zipcode" class="searchInput"  type="text" name="" placeholder="Search County">
         <button class="searchButton" onclick="searchStores()" href="#">
             <i class="fas fa-search-location">
                 <img src="style/image/search-location-solid.svg" style="width: 100%;">
@@ -28,6 +32,7 @@
       <div id="store-list" >
         
             <div class="store-container">
+               
                 <div>
                     <img src="style/image/store-solid.svg"> <br>
                     <div id="phone">0894911439</div>
@@ -40,7 +45,6 @@
                 </div>
             </div>
             <hr>
-
     </div>
 
 
@@ -48,10 +52,10 @@
     
 
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh15L6ZQVrZVsMjwAhb_3-X6bbgpSGtQk&callback=initMap">
-    </script>
-
+    
+    <script  async defer 
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyCK0L0OJq_YJV9zbbdafaWEsmg6PeCyBXc&callback=initMap"  
+    type="text/javascript"></script>
     
     
 

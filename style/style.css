@@ -6,18 +6,35 @@ body {
     padding: 0;
     position: relative;
 }
+.logotitle
+{
+    display: flex;
+    flex-direction: column;
+}
+#papalogo
+{
+    width: 85%;
+margin-top: 120px;
+margin-left: 210px;
+   
+    z-index: 100;
+    position: absolute;
+    
+}
+
 #map{
     width: 100%;
     
     height: 100%;
 }
+
 #Sheading{ 
     
     font-size: 350%;
     overflow: hidden;
     z-index: 100;
     top: 22%;
-    left: 8%;
+    left: 6%;
     position: absolute;
     font-weight: bold;
     font-family: 'Squada One', cursive;
@@ -49,7 +66,7 @@ img
     position: absolute;
     z-index: 100;
     top: 28%;
-    left: 21%;
+    left: 18%;
     transform:  translate(-50%,50%);
     background: #2f3640;
     height: 40px;
@@ -103,17 +120,18 @@ img
 /*--------------*/
 #store-list
 {
-    width: 28%;
-    height: 330px;
+    width: 26%;
+    height: 275px;
     z-index: 100;
     border-radius: 10px;
     overflow-y: scroll;
   
     background: rgb(47,54,64,0.9);
+    
     position: absolute;
     top: 43%;
-    left: 8%;
-    
+    left: 5%;
+    overflow-x: hidden;
 }
 
 #store-list::-webkit-scrollbar {
@@ -199,6 +217,7 @@ img
 .googleMapBox div{
     text-align: center;
     padding: 5px;
+    color: black;
 
 }
 .googleMapBox .phaddress{
@@ -211,11 +230,32 @@ img
 
     width: 20px;
 }
+.googleMapBox .button
+{
+    width: 95%;
+    
 
+}
+.googleMapBox .button a
+ {
+   font-weight: bold;
+   font-size: 15px;
 
-.gm-style-iw div :hover
+    color: #b4bbc5;
+}
+.gm-style-iw
+{
+    position: absolute;
+    z-index: 999;
+}
+.gm-style-iw div :hover 
 {
     background-color: red;
     background-image: linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
     border-radius: 10px;
+    
+}
+.gm-style-iw div :hover a
+{
+    color: #2f3640;
 }

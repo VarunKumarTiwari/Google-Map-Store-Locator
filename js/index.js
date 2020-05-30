@@ -1,15 +1,19 @@
 var map;
 var markers = [];
 var image= 'style/image/icons8-street-view-64.png';
-
+var A;
+var B;
+var Athlone;
+var Dublin;
 
 var infoWindow;
 function initMap() {
- 
-    var Athlone = {lat: 53.43333, lng: -7.95};
+
+    var Athlone = {lat: 34.040151, lng: -118.330501};
+    
     map = new google.maps.Map(document.getElementById('map'), {
-      center: Athlone,
-      zoom: 50,
+     center : Athlone,
+      zoom: 8,
       mapTypeId: 'roadmap',
       
       
@@ -98,34 +102,48 @@ function initMap() {
 
     infoWindow = new google.maps.InfoWindow();
    
+    A = new google.maps.DirectionsRenderer({
+      map: map
+    });
+
     
     
     searchStores();
-    google.maps.event.addListenerOnce(map, 'idle', function(){
-      jQuery('.gm-style-iw').prev('div').remove();
-  });
+   
     
   }
 
 
 
   function searchStores(){
-    var foundStores = [];
-    var zipCode = document.getElementById('zipcode').value;
+    var foundCounty = [];
+    var space = " ";
+    var County = document.getElementById('zipcode').value;
+
     
-    if(zipCode){
+    if(County){
+      County = County.charAt(0).toUpperCase() + County.slice(1);
+      County = space.concat(County);
+      var count=0;
         stores.forEach(function(store){
-            var postal = store.address.postalCode.substring(0,5);
-            if(postal == zipCode){
-                foundStores.push(store);
+            var storeCo = store.store_Co;
+            console.log(County);
+            if(storeCo == County){
+              count++;
+              foundCounty.push(store);
             }
         });
+if(count==0)
+{
+  foundCounty = stores;
+  window.alert("Papa Jhon's may not exist in the searched County");
+}
     } else {
-        foundStores = stores;
+      foundCounty = stores;
     }
     clearLocations();
-    storeData(foundStores);
-    dataMarker(foundStores);
+    storeData(foundCounty);
+    dataMarker(foundCounty);
     setOnClickListener();
 }
 
@@ -141,7 +159,7 @@ function clearLocations() {
 
 function setOnClickListener() {
     var storeElements = document.querySelectorAll('.store-container');
-    console.log(storeElements);
+    
     storeElements.forEach(function(elem, index){
       elem.addEventListener('click', function(){
           google.maps.event.trigger(markers[index], 'click');
@@ -156,8 +174,9 @@ function setOnClickListener() {
   { var storeHDis = ""; 
     
     stores.forEach(function(store,index){
-      var address = store.addressLines;
-      var phone = store.phoneNumber; 
+      var address = store.store_address;
+      var phone = store.store_telephone; 
+      var Co = store.store_Co;
       storeHDis +=`
        
             <div class="store-container">
@@ -166,7 +185,7 @@ function setOnClickListener() {
                 <div id="phone">${phone}</div>
             </div>
         
-            <div id="address">${address[0]}<br> ${address[1]}</div>
+            <div id="address">${address}${Co}</div>
        
         <div id="index">
         <div id="storenum"> ${index+1} </div>
@@ -182,27 +201,32 @@ function dataMarker(stores)
   var bounds = new google.maps.LatLngBounds();
   stores.forEach(function(store){
     var latlng = new google.maps.LatLng(
-      store.coordinates.latitude,
-      store.coordinates.longitude
+      store.store_latitude,
+      store.store_longitude
     ) ;
-    var name = store.name;
-    var address = store.addressLines[0];
-    var opentill = store.openStatusText;
-    var phone = store.phoneNumber;
+    var lat = store.store_latitude;
+    var link = store.store_link;
+    var lng =  store.store_longitude;
+    var name = store.location;
+    var address = store.store_address;
+    var opentill = store.store_opening_hours;
+    var phone = store.store_telephone;
+    var Co = store.store_Co;
     bounds.extend(latlng);
 
-    createMarker(latlng, name, address , phone, opentill);
+    createMarker(latlng,lat , lng, name, address , phone, opentill, link, Co);
   
   });
 
   map.fitBounds(bounds);
 }
 
-  function createMarker(latlng, name, address, phone, opentill) {
+  function createMarker(latlng, lat, lng, name, address, phone, opentill, link, Co) {
+    
     var html = `
     <div class="googleMapBox">
-    <div><b> ${name} </b><br>
-    ${opentill}<br></div>
+    <div><b> ${name} </b><br>Open till 
+    ${opentill} PM today<br></div>
     <hr>
     <div class="phaddress">
     
@@ -212,14 +236,21 @@ function dataMarker(stores)
 
     <img src="style/image/address-card-solid.svg" >
    
-    <div id="add">${address}</div>
+    <div id="add" onclick="addressLatLng(${lat},${lng})" >
+    <a >${address}${Co}
+    </a>
     </div>
+  
+    </div>
+    <div class="button"><a href="${link}">Open Store</a></div>
     </div>
     
     `
     infoWindow = new google.maps.InfoWindow({
       content: html
      } );
+     
+     
     
     var marker = new google.maps.Marker({
       map: map,
@@ -234,4 +265,30 @@ function dataMarker(stores)
     markers.push(marker);
   }
 
-  
+  function addressLatLng(lat ,lng)
+     {
+       
+
+       
+      B = new google.maps.DirectionsService();
+
+
+        Athlone = new google.maps.LatLng(53.4239, -7.9407);
+         Dublin = new google.maps.LatLng(lat, lng);
+       
+       
+      
+        A.setMap(map);
+        var  request = {
+            origin:Athlone,
+            destination:Dublin,
+            travelMode : 'DRIVING'
+        };
+
+        B.route(request,function(result,status){
+            if(status=="OK")
+            {
+                A.setDirections(result);
+            }
+        });
+     }
