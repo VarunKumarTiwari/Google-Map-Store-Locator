@@ -1,4 +1,47 @@
+html {
 
+    --search-button-in :#b4bbc5; 
+    --search-button-in-e :white;
+    --search-level: #2f3640;
+    --search-input:white;
+    --heading : linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
+    --storelist-hover : linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
+    --scroll-thumb: darkgrey;
+    --googleBoxhover : linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
+    --googleboxback:#2f3640;
+    --googleboxA:#b4bbc5 ;
+    --googleboxAhover : #2f3640;
+
+    --bg-panel: rgb(47,54,64,0.9);
+    --color-headings: black;
+    --color-text: #B5B5B5;
+    --color-indexnum : black;
+    --color-indexbg : grey;
+    
+}
+
+html[data-theme='light'] {
+    --search-button-in :white;
+    --search-button-in-e :#b4bbc5;
+    --search-level : white;
+    --search-input:#2f3640;
+    --heading : linear-gradient(90deg, rgba(34,195,136,1) 0%, rgba(93,163,163,1) 25%, rgba(86,168,175,1) 50%, rgba(119,128,186,1) 76%, rgba(114,119,205,1) 100%);
+    --storelist-hover : linear-gradient(90deg, rgba(34,195,136,1) 0%, rgba(93,163,163,1) 25%, rgba(86,168,175,1) 50%, rgba(119,128,186,1) 76%, rgba(114,119,205,1) 100%);
+    --scroll-thumb: #2f3640;
+    --googleBoxhover : linear-gradient(90deg, rgba(34,195,136,1) 0%, rgba(93,163,163,1) 25%, rgba(86,168,175,1) 50%, rgba(119,128,186,1) 76%, rgba(114,119,205,1) 100%);
+    --googleboxback:white;
+    --googleboxA:#2f3640 ;
+    --googleboxAhover : black;
+
+    --searchLevel : #2f3640;
+    --bg-panel: #EBEBEB;
+    --color-headings:#2F3640;
+    --color-text: #333333;
+    --color-indexnum : white;
+    
+
+    
+}
 body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
@@ -6,6 +49,84 @@ body {
     padding: 0;
     position: relative;
 }
+
+/*---------------------*/
+.container {
+    text-align: center;
+    background-color: var(--bg-panel);
+    margin-left: 80%;
+    margin-top: .5%;
+    padding: 15px;
+    border-radius: 15px;
+    z-index: 102;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 50% 45%;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title switch"
+        "content content";
+
+}
+.container h3 {
+    margin: 0;
+    color: var(--color-headings);
+}
+
+
+
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 52px;
+	height: 27px;
+	background: grey;
+	float: right;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: var(--color-headings );
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 45px;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+/*//////////////////////////*/
+
 .logotitle
 {
     display: flex;
@@ -13,7 +134,7 @@ body {
 }
 #papalogo
 {
-    width: 85%;
+    width: 80%;
 margin-top: 120px;
 margin-left: 210px;
    
@@ -43,7 +164,7 @@ margin-left: 210px;
 
     .gradient-text {
         background-color: red;
-        background-image: linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
+        background-image: var(--heading);
         background-size: 100%;
         background-repeat: repeat;
         -webkit-background-clip: text;
@@ -68,7 +189,7 @@ img
     top: 28%;
     left: 18%;
     transform:  translate(-50%,50%);
-    background: #2f3640;
+    background: var(--search-level);
     height: 40px;
     border-radius: 40px;
     padding: 10px;
@@ -80,7 +201,7 @@ img
 }
 
 .searchBox:hover > .searchButton {
-  background: white;
+  background:var( --search-button-in-e);
   color : #2f3640;
 }
 
@@ -90,7 +211,7 @@ img
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #b4bbc5;
+    background: var( --search-button-in);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,7 +224,7 @@ img
     outline:none;
     float:left;
     padding: 0;
-    color: white;
+    color:var( --search-input);
     font-size: 16px;
     transition: 0.4s;
     line-height: 40px;
@@ -126,8 +247,8 @@ img
     border-radius: 10px;
     overflow-y: scroll;
   
-    background: rgb(47,54,64,0.9);
-    
+   /* background: rgb(47,54,64,0.9);*/
+   background: var(--bg-panel);
     position: absolute;
     top: 43%;
     left: 5%;
@@ -147,7 +268,7 @@ img
 }
  
 #store-list::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+  background-color: var(--scroll-thumb);
   outline: 1px solid slategrey;
   border-radius:    5px  20px   20px 5px;
 }
@@ -161,7 +282,7 @@ img
 .store-container:hover
 {
     background-color: red;
-    background-image: linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
+    background-image: var(--storelist-hover);
         border-radius: 7px;
 }
 .store-container img
@@ -184,6 +305,7 @@ img
     margin-right: 3%;
     text-align: left;
     font-weight: bolder;
+    color: var(--color-headings );
 }
 
 #phone
@@ -199,11 +321,13 @@ img
     font-size: 15px;
     background-color: grey;
     border-radius: 100%;
+    color: var(--color-indexnum);
     
 }
 #index
 {
    margin-left: 5%;
+  
 }
 
 .googleMapBox 
@@ -211,10 +335,11 @@ img
     
     border-radius: 10px;
     z-index: 10001;
-    background: rgb(47,54,64,0.9);
+    background:var(--googleboxback);
 
 }
 .googleMapBox div{
+    font-size: 15px;
     text-align: center;
     padding: 5px;
     color: black;
@@ -241,7 +366,7 @@ img
    font-weight: bold;
    font-size: 15px;
 
-    color: #b4bbc5;
+    color: var(--googleboxA);
 }
 .gm-style-iw
 {
@@ -251,11 +376,11 @@ img
 .gm-style-iw div :hover 
 {
     background-color: red;
-    background-image: linear-gradient(103deg, rgba(205,226,201,1) 0%, rgba(246,211,211,1) 50%, rgba(182,188,191,1) 100%);
+    background-image:var(--googleBoxhover);
     border-radius: 10px;
     
 }
 .gm-style-iw div :hover a
 {
-    color: #2f3640;
+    color: var(--googleboxAhover);
 }
