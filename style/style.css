@@ -54,7 +54,7 @@ body {
 .container {
     text-align: center;
     background-color: var(--bg-panel);
-    margin-left: 70%;
+    margin-left: 75%;
     margin-top: .5%;
     padding: 15px;
     border-radius: 15px;
