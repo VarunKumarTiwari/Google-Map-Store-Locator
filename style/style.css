@@ -1,5 +1,8 @@
 html {
-
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
     --search-button-in :#b4bbc5; 
     --search-button-in-e :white;
     --search-level: #2f3640;
@@ -44,17 +47,19 @@ html[data-theme='light'] {
 }
 body {
     font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
+    height: 100%;
     margin: 0;
     padding: 0;
     position: relative;
 }
 
+
+
 /*---------------------*/
 .container {
     text-align: center;
     background-color: var(--bg-panel);
-    margin-left: 75%;
+    margin-left: 80%;
     margin-top: .5%;
     padding: 15px;
     border-radius: 15px;
@@ -127,17 +132,35 @@ html.transition *:after {
 }
 /*//////////////////////////*/
 
-.logotitle
+section
 {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    min-width: 40%;
+    height: 99%;
+    z-index: 101;
+    position: absolute;
+   
+
 }
+@media (max-width: 400px) {
+    #map{
+        width: 100%;
+        height: 50%;
+    }
+    section {
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+    }
+  }
+
 #papalogo
 {
     width: 80%;
-margin-top: 118px;
-margin-left: 200px;
-   
+    top: 20%;
+    margin-left:28%;
     z-index: 100;
     position: absolute;
     
@@ -154,8 +177,8 @@ margin-left: 200px;
     font-size: 350%;
     overflow: hidden;
     z-index: 100;
-    top: 22%;
-    left: 6%;
+    top: 28%;
+    margin-left: 10%;
     position: absolute;
     font-weight: bold;
     font-family: 'Squada One', cursive;
@@ -180,14 +203,14 @@ margin-left: 200px;
 }
 img
 {
-    width: 10%;
+    width: 35%;
 }
 
 .searchBox {
     position: absolute;
     z-index: 100;
-    top: 28%;
-    left: 18%;
+    top: 35%;
+    margin-left: 42%;
     transform:  translate(-50%,50%);
     background: var(--search-level);
     height: 40px;
@@ -241,17 +264,17 @@ img
 /*--------------*/
 #store-list
 {
-    width: 26%;
+    width: 385px;
     height: 275px;
     z-index: 100;
     border-radius: 10px;
     overflow-y: scroll;
-  
+    top: 50%;
+    margin-left: 10%;
    /* background: rgb(47,54,64,0.9);*/
    background: var(--bg-panel);
     position: absolute;
-    top: 43%;
-    left: 5%;
+   
     overflow-x: hidden;
 }
 

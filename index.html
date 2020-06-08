@@ -4,7 +4,9 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Google Map Store Locator</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    
+
     <link rel='stylesheet' type='text/css' media='screen' href='style/style.css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='js/index.js'></script>
@@ -15,18 +17,24 @@
 </head>
 
 <body>
-    <div id="papalogo">
-    <img src="style/image/papa.png">
-</div>
 
-<div class="container">
-    <h3> Dark / Light Mode</h3>
-    <div class="toggle-container">
-        <input type="checkbox" onclick="OnChangeCheckbox (this)" id="switch" name="theme" /><label for="switch">Toggle</label>
+    <div class="container">
+        <h3> Dark / Light Mode</h3>
+        <div class="toggle-container">
+            <input type="checkbox" onclick="OnChangeCheckbox (this)" id="switch" name="theme" /><label for="switch">Toggle</label>
+        </div>
+    
     </div>
+<section >  
+<nav>
+    <div id="papalogo">
+        <img src="style/image/papa.png">
+    </div>
+</nav>
 
-</div>
-    <div class="gradient-text" id="Sheading">Store Locator</div>
+    <div class="gradient-text" id="Sheading">
+        Store Locator
+    </div>
 
     <div class="searchBox">
         <input id="zipcode" class="searchInput"  type="text" name="" placeholder="Search County">
@@ -37,24 +45,26 @@
         </button>
     </div>
 
-      <div id="store-list" >
+
+    <div id="store-list" >
         
-            <div class="store-container">
+        <div class="store-container">
                
                 <div>
                     <img src="style/image/store-solid.svg"> <br>
                     <div id="phone">0894911439</div>
                 </div>
-            <div>
-                <div id="address">8480 Beverly Blvd Los Angeles,<br> CA 90048 </div>
-            </div>
-            <div>
-                <div id="storenum"> 1 </div>
-                </div>
-            </div>
-            <hr>
+        <div>
+            <div id="address">8480 Beverly Blvd Los Angeles,<br> CA 90048 </div>
+        </div>
+        <div>
+            <div id="storenum"> 1 </div>
+        </div>
+        </div>
+        <hr>
     </div>
 
+</section>
 
     <div id="map"></div>
     
